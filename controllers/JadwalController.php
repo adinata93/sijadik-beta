@@ -225,6 +225,12 @@ class JadwalController extends Controller
                 return $this->render('create', [
                     'model' => $model,
                 ]);
+            } else {
+                Yii::$app->session->setFlash('danger', '<b>GAGAL CREATE</b> <br> Input <i>Nama Dosen</i> yang diberikan tidak terdaftar sebagai pengajar <i>Mata Kuliah: ' . $matkul->nama . '</i>');
+                Yii::$app->session->setFlash('info', '<b>SOLUSI</b> <br> Berikan input <i>Nama Dosen</i> yang sudah terdaftar pada <i>Mata Kuliah</i> tertentu jika ingin menambahkan jadwal baru');
+                return $this->render('create', [
+                    'model' => $model,
+                ]);                
             }
 
             $model->periode_mata_kuliah_pengajar = $model->periode_dosen_pengajar;
@@ -467,6 +473,12 @@ class JadwalController extends Controller
                 return $this->render('update', [
                     'model' => $model,
                 ]);
+            } else {
+                Yii::$app->session->setFlash('danger', '<b>GAGAL UPDATE</b> <br> Input <i>Nama Dosen</i> yang diberikan tidak terdaftar sebagai pengajar <i>Mata Kuliah: ' . $matkul->nama . '</i>');
+                Yii::$app->session->setFlash('info', '<b>SOLUSI</b> <br> Berikan input <i>Nama Dosen</i> yang sudah terdaftar pada <i>Mata Kuliah</i> tertentu jika ingin melakukan update jadwal');
+                return $this->render('update', [
+                    'model' => $model,
+                ]);                
             }
 
             $model->periode_mata_kuliah_pengajar = $model->periode_dosen_pengajar;
