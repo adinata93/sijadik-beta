@@ -207,8 +207,8 @@ class JadwalController extends Controller
                 )
             ->all();
 
-            if ($model->jadwal_start > $model->jadwal_start) {
-                Yii::$app->session->setFlash('danger', "input <i>Jadwal Start</i> dan <i>Jadwal End</i> tidak valid");
+            if ($model->jadwal_start > $model->jadwal_end) {
+                Yii::$app->session->setFlash('danger', "<b>GAGAL CREATE</b> <br> input <i>Jadwal Start</i> dan <i>Jadwal End</i> tidak valid");
                 Yii::$app->session->setFlash('info', '<b>SOLUSI</b> <br> Berikan input <i>Jadwal Start</i> yang lebih kecil dari input <i>Jadwal End</i> untuk menambahkan jadwal baru');
                 return $this->render('create', [
                     'model' => $model,
@@ -445,6 +445,14 @@ class JadwalController extends Controller
                     ]
                 )
             ->all();
+
+            if ($model->jadwal_start > $model->jadwal_end) {
+                Yii::$app->session->setFlash('danger', "<b>GAGAL UPDATE</b> <br> input <i>Jadwal Start</i> dan <i>Jadwal End</i> tidak valid");
+                Yii::$app->session->setFlash('info', '<b>SOLUSI</b> <br> Berikan input <i>Jadwal Start</i> yang lebih kecil dari input <i>Jadwal End</i> untuk menambahkan jadwal baru');
+                return $this->render('update', [
+                    'model' => $model,
+                ]);
+            }
 
             if ($jad != null) {
                 $print = "<b>GAGAL UPDATE</b>";
