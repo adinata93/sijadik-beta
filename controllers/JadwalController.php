@@ -432,8 +432,11 @@ class JadwalController extends Controller
                 ->where(
                     ['and',
                         ['and',
-                            ['periode_dosen_pengajar' => $model->periode_dosen_pengajar,],
-                            ['nip_nidn_dosen_pengajar' => $model->nip_nidn_dosen_pengajar]
+                            ['!=', 'id', $model->id],
+                            ['and',
+                                ['periode_dosen_pengajar' => $model->periode_dosen_pengajar,],
+                                ['nip_nidn_dosen_pengajar' => $model->nip_nidn_dosen_pengajar]
+                            ]
                         ],
                         ['or',
                             ['and', ['>=', 'jadwal_start', $model->jadwal_start], ['<=', 'jadwal_end', $model->jadwal_end]],
