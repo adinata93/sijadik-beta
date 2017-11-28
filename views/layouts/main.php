@@ -37,7 +37,6 @@ AppAsset::register($this);
         <!-- Logo -->
         <a href=<?= Yii::$app->homeUrl ?> class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-                        <!-- <img src="dist/img/makara.png" class="img-circle" alt="User Image"> -->
           <span class="logo-mini"><img src="dist/img/icon.png" height="20" width="20"></span>
           <!-- logo for regular state and mobile devices -->
           <span class="logo-lg"><b>SIJADIK</b></span>
