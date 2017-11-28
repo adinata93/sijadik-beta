@@ -21,6 +21,7 @@ use app\models\Periode;
             ->where(['!=', 'is_locked', 'Locked'])
         ->all(),'nama','nama'),
         'hideSearch' => true,
+        'theme' => Select2::THEME_DEFAULT,
     ]) ?>
 
     <?= $form->field($model, 'departemen')->widget(Select2::classname(), [
@@ -29,6 +30,7 @@ use app\models\Periode;
         'pluginOptions' => [
             'allowClear' => true
         ],
+        'theme' => Select2::THEME_DEFAULT,
     ]) ?>
 
     <?= $form->field($model, 'nama_dosen')->textInput(['maxlength' => true]) ?>

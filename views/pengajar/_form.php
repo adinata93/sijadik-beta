@@ -22,6 +22,7 @@ use app\models\MataKuliah;
             ->where(['!=', 'is_locked', 'Locked'])
         ->all(),'nama','nama'),
         'hideSearch' => true,
+        'theme' => Select2::THEME_DEFAULT,
     ]) ?>
 
     <?= $form->field($model, 'nip_nidn_dosen')->widget(Select2::classname(), [
@@ -30,6 +31,7 @@ use app\models\MataKuliah;
         'pluginOptions' => [
             'allowClear' => true
         ],
+        'theme' => Select2::THEME_DEFAULT,
     ]) ?>
 
     <?= $form->field($model, 'nama_mata_kuliah')->widget(Select2::classname(), [
@@ -38,6 +40,7 @@ use app\models\MataKuliah;
         'pluginOptions' => [
             'allowClear' => true
         ],
+        'theme' => Select2::THEME_DEFAULT,
     ]) ?>
 
     <?= $form->field($model, 'skenario')->textInput() ?>

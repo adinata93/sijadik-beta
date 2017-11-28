@@ -66,6 +66,8 @@ class PengajarSearch extends Pengajar
             return $dataProvider;
         }
 
+        $query->joinWith('periodeDosen');
+
         // grid filtering conditions
         $query->andFilterWhere([
             'skenario' => $this->skenario,
@@ -77,7 +79,7 @@ class PengajarSearch extends Pengajar
 
         $query->andFilterWhere(['like', 'periode_dosen', $this->periode_dosen])
             ->andFilterWhere(['like', 'departemen_dosen', $this->departemen_dosen])
-            ->andFilterWhere(['like', 'nip_nidn_dosen', $this->nip_nidn_dosen])
+            ->andFilterWhere(['like', 'dosen.nama_dosen', $this->nip_nidn_dosen])
             ->andFilterWhere(['like', 'periode_mata_kuliah', $this->periode_mata_kuliah])
             ->andFilterWhere(['like', 'program_studi_mata_kuliah', $this->program_studi_mata_kuliah])
             ->andFilterWhere(['like', 'kategori_koefisien_program_studi_mata_kuliah', $this->kategori_koefisien_program_studi_mata_kuliah])

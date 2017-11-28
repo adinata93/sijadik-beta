@@ -21,6 +21,7 @@ use kartik\select2\Select2;
     <?= $form->field($model, 'is_locked')->widget(Select2::classname(), [
         'data' => [ 'Unlocked' => 'Unlocked', 'Locked' => 'Locked', ],
         'hideSearch' => true,
+        'theme' => Select2::THEME_DEFAULT,
     ]) ?>
 
     <div class="form-group">

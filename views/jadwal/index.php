@@ -26,8 +26,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'striped' => false,
         // 'pjax' => true,
         'hover' => true,
-        'showPageSummary' => true,
-        'pageSummaryRowOptions' => ['class'=>'warning text-right text-danger', 'style'=>'font-weight:bold;'],
         'columns' => [
             ['class' => 'kartik\grid\SerialColumn'],
 

@@ -23,6 +23,7 @@ use kartik\datetime\DateTimePicker;
             ->where(['!=', 'is_locked', 'Locked'])
         ->all(),'nama','nama'),
         'hideSearch' => true,
+        'theme' => Select2::THEME_DEFAULT,
     ]) ?>
 
     <?= $form->field($model, 'nip_nidn_dosen_pengajar')->widget(Select2::classname(), [
@@ -31,6 +32,7 @@ use kartik\datetime\DateTimePicker;
         'pluginOptions' => [
             'allowClear' => true
         ],
+        'theme' => Select2::THEME_DEFAULT,
     ]) ?>
 
     <?= $form->field($model, 'nama_mata_kuliah_pengajar')->widget(Select2::classname(), [
@@ -39,6 +41,7 @@ use kartik\datetime\DateTimePicker;
         'pluginOptions' => [
             'allowClear' => true
         ],
+        'theme' => Select2::THEME_DEFAULT,
     ]) ?>
 
     <?= $form->field($model, 'jadwal_start')->widget(DateTimePicker::classname(), [

@@ -22,6 +22,7 @@ use app\models\ProgramStudi;
             ->where(['!=', 'is_locked', 'Locked'])
         ->all(),'nama','nama'),
         'hideSearch' => true,
+        'theme' => Select2::THEME_DEFAULT,
     ]) ?>
 
     <?= $form->field($model, 'fakultas_unit_pengajaran')->widget(Select2::classname(), [
@@ -30,6 +31,7 @@ use app\models\ProgramStudi;
         'pluginOptions' => [
             'allowClear' => true
         ],
+        'theme' => Select2::THEME_DEFAULT,
     ]) ?>
 
     <?= $form->field($model, 'kode_organisasi')->textInput(['maxlength' => true]) ?>
@@ -40,6 +42,7 @@ use app\models\ProgramStudi;
         'pluginOptions' => [
             'allowClear' => true
         ],
+        'theme' => Select2::THEME_DEFAULT,
     ]) ?>
 
     <?= $form->field($model, 'jenjang')->textInput(['maxlength' => true]) ?>

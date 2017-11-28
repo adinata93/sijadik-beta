@@ -21,6 +21,7 @@ use app\models\KategoriKoefisien;
         'pluginOptions' => [
             'allowClear' => true
         ],
+        'theme' => Select2::THEME_DEFAULT,
     ]) ?>
 
     <?= $form->field($model, 'nama')->textInput(['maxlength' => true]) ?>
