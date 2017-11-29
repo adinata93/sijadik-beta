@@ -330,6 +330,8 @@ class MataKuliahController extends Controller
                 if ((Yii::$app->user->identity->role!='Manajer Pendidikan') ||
                     (Yii::$app->user->identity->role!='Manajer Umum') ||
                     (Yii::$app->user->identity->role!='Tenaga Kependidikan SDM')) {
+                    true;
+                } else {
                     throw new ForbiddenHttpException('You are not allowed to perform this action.');                    
                 }
             }

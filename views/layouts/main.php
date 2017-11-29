@@ -88,7 +88,7 @@ AppAsset::register($this);
 
           <!-- Sidebar Menu -->
           <ul class="sidebar-menu">
-            <li class="header">SIMULASI IMBAL JASA</li>
+            <li class="header">IMBAL JASA DAN JADWAL</li>
             <?php 
                 $temp = stripos(Url::current(), 'dosen');
                 if ($temp == true) {
@@ -98,8 +98,9 @@ AppAsset::register($this);
                 }
             ?>
               <a href="index.php?r=dosen%2Findex">
-                <i class="glyphicon glyphicon-user"></i>
-                <span>Dosen</span> 
+                <i class="fa fa-user-md"></i>
+                <span>Dosen</span>
+                <small class="label pull-right bg-blue">Summary</small>
               </a>
             </li>
             <?php 
@@ -111,8 +112,9 @@ AppAsset::register($this);
                 }
             ?>
               <a href="index.php?r=pembimbing%2Findex">
-                <i class="glyphicon glyphicon-road"></i>
-                <span>Pembimbing</span> 
+                <i class="fa fa-road"></i>
+                <span>Pembimbing</span>
+                <small class="label pull-right text-blue"><i class="fa fa-circle-o"></i></small>
               </a>
             </li>
             <?php 
@@ -124,8 +126,9 @@ AppAsset::register($this);
                 }
             ?>
               <a href="index.php?r=penguji%2Findex">
-                <i class="glyphicon glyphicon-check"></i>
+                <i class="fa fa-balance-scale"></i>
                 <span>Penguji</span> 
+                <small class="label pull-right text-blue"><i class="fa fa-circle-o"></i></small>
               </a>
             </li>
             <?php 
@@ -139,22 +142,10 @@ AppAsset::register($this);
               <a href="index.php?r=pengajar%2Findex">
                 <i class="glyphicon glyphicon-education"></i>
                 <span>Pengajar</span> 
+                <small class="label pull-right text-blue"><i class="fa fa-circle-o"></i></small>
               </a>
             </li>
-            <li class="header">JADWAL AKADEMIK</li>
-            <?php 
-                $temp = stripos(Url::current(), 'mata-kuliah');
-                if ($temp == true) {
-                    echo '<li class="active">';
-                } else {
-                    echo '<li>';
-                }
-            ?>
-              <a href="index.php?r=mata-kuliah%2Findex">
-                <i class="glyphicon glyphicon-list-alt"></i>
-                <span>Mata Kuliah</span> 
-              </a>
-            </li>
+            <!-- <li class="header">JADWAL AKADEMIK</li> -->
             <?php 
                 $temp = stripos(Url::current(), 'jadwal');
                 if ($temp == true) {
@@ -164,11 +155,24 @@ AppAsset::register($this);
                 }
             ?>
               <a href="index.php?r=jadwal%2Findex">
-                <i class="glyphicon glyphicon-calendar"></i>
+                <i class="fa fa-calendar"></i>
                 <span>Jadwal Pengajar</span> 
               </a>
             </li>
-            <li class="header">SETTING</li>
+            <?php 
+                $temp = stripos(Url::current(), 'mata-kuliah');
+                if ($temp == true) {
+                    echo '<li class="active">';
+                } else {
+                    echo '<li>';
+                }
+            ?>
+              <a href="index.php?r=mata-kuliah%2Findex">
+                <i class="fa fa-book"></i>
+                <span>Mata Kuliah</span> 
+              </a>
+            </li>
+            <li class="header">SETTINGS</li>
             <?php 
                 $temp = stripos(Url::current(), 'periode');
                 if ($temp == true) {
@@ -178,9 +182,9 @@ AppAsset::register($this);
                 }
             ?>
               <a href="index.php?r=periode%2Findex">
-                <i class="glyphicon glyphicon-time"></i>
+                <i class="fa fa-clock-o"></i>
                 <span>Periode</span> 
-                <small class="label pull-right bg-red"><i class="glyphicon glyphicon-lock"></i></small>
+                <small class="label pull-right bg-red"><i class="fa fa-lock"></i></small>
               </a>
             </li>
             <?php 
@@ -192,7 +196,7 @@ AppAsset::register($this);
                 }
             ?>
               <a href="index.php?r=departemen%2Findex">
-                <i class="glyphicon glyphicon-th-large"></i>
+                <i class="fa fa-building-o"></i>
                 <span>Departemen</span> 
               </a>
             </li>
@@ -246,10 +250,10 @@ AppAsset::register($this);
       <footer class="main-footer">
         <!-- To the right -->
         <div class="pull-right hidden-xs">
-          SDM FKG UI
+          UNIVERSITAS INDONESIA
         </div>
         <!-- Default to the left -->
-        <strong>Copyright &copy; 2017 <a href="http://www.ui.ac.id/">Universitas Indonesia</a></strong>
+        <strong>Copyright &copy; 2017 <a href="http://fkg.ui.ac.id/">Fakultas Kedokteran Gigi</a></strong>
       </footer>
     
     </div><!-- ./wrapper -->

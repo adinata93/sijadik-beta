@@ -49,7 +49,12 @@ class MataKuliahSearch extends MataKuliah
             'sort'=> [
                 'defaultOrder' => [
                     'periode'=>SORT_ASC,
-                    'program_studi'=>SORT_ASC,
+                    // 'fakultas_unit_pengajaran'=>SORT_ASC,
+                    // 'kode_organisasi'=>SORT_ASC,
+                    // 'program_studi'=>SORT_ASC,
+                    // 'jenjang'=>SORT_ASC,
+                    // 'program'=>SORT_ASC,
+                    // 'jenis'=>SORT_ASC,
                 ]
             ]
         ]);
