@@ -13,6 +13,7 @@ use app\models\Periode;
 use app\models\MataKuliah;
 use yii\web\ForbiddenHttpException;
 use yii\filters\AccessControl;
+use yii\helpers\Url;
 
 /**
  * PengajarController implements the CRUD actions for Pengajar model.
@@ -373,9 +374,7 @@ class PengajarController extends Controller
             if ($dos == null) {
                 Yii::$app->session->setFlash('danger', '<b>GAGAL UPDATE</b> <br> Input <i>Nama Dosen</i> yang diberikan tidak terdaftar pada <i>Periode: ' . $model->periode_dosen . '</i>');
                 Yii::$app->session->setFlash('info', '<b>SOLUSI</b> <br> Berikan input <i>Nama Dosen</i> yang sudah terdaftar pada <i>Periode</i> tertentu jika ingin malakukan update pengajar');
-                return $this->render('update', [
-                    'model' => $model,
-                ]);
+                return $this->redirect(Url::current());
             }
 
             $matkul = MataKuliah::find()->where(['nama' => $model->nama_mata_kuliah])->one();
@@ -474,10 +473,7 @@ class PengajarController extends Controller
             if ($pen != null) {
                 Yii::$app->session->setFlash('danger', '<b>GAGAL UPDATE</b> <br> <i>' . $dos->nama_dosen . '</i> sudah menjadi pengajar pada mata kuliah <i>' . $matkul->nama . '</i> pada periode <i>' . $model->periode_dosen . '</i>');
                 Yii::$app->session->setFlash('info', '<b>SOLUSI</b> <br> Berikan input <i>Periode</i>, <i>Nama Dosen</i> dan <i>Nama Mata Kuliah</i> yang berbeda jika ingin melakukan update pengajar');
-                
-                return $this->render('update', [
-                    'model' => $model,
-                ]);
+                return $this->redirect(Url::current());
             }
 
             if ($model->skenario != null) {
@@ -504,21 +500,34 @@ class PengajarController extends Controller
             $model->last_updated_by = Yii::$app->user->identity->nama;
             $model->last_updated_time = date('Y-m-d H:i:s');
             
-            $temp = Pengajar::find()
+            $old_pen = Pengajar::find()
                 ->where(
                     ['and',
-                        ['periode_dosen' => $model->periode_dosen],
+                        ['periode_dosen' => $periode_dosen],
                         ['and',
-                            ['nip_nidn_dosen' => $model->nip_nidn_dosen],
-                            ['nama_mata_kuliah' => $model->nama_mata_kuliah]
+                            ['nip_nidn_dosen' => $nip_nidn_dosen],
+                            ['nama_mata_kuliah' => $nama_mata_kuliah]
                         ]
                     ]
                 )
             ->one();
+            
+            $old_dos = Dosen::find()->where([
+                'nip_nidn' => $nip_nidn_dosen,
+                'periode' => $periode_dosen,
+            ])->one();
 
             # Send calculation to Dosen Page
-            $dos->total_sks_kum = $dos->total_sks_kum + $model->sks_kum - $temp->sks_kum;
-            $dos->total_bkd_fte = $dos->total_bkd_fte + $model->bkd_fte - $temp->bkd_fte;
+            if ($old_dos->nip_nidn != $model->nip_nidn_dosen) {
+                $old_dos->total_sks_kum = $old_dos->total_sks_kum - $old_pen->sks_kum;
+                $old_dos->total_bkd_fte = $old_dos->total_bkd_fte - $old_pen->bkd_fte;
+                $dos->total_sks_kum = $dos->total_sks_kum + $model->sks_kum;
+                $dos->total_bkd_fte = $dos->total_bkd_fte + $model->bkd_fte;
+                $old_dos->save();
+            } else {
+                $dos->total_sks_kum = $dos->total_sks_kum + $model->sks_kum - $old_pen->sks_kum;
+                $dos->total_bkd_fte = $dos->total_bkd_fte + $model->bkd_fte - $old_pen->bkd_fte;
+            }
             $dos->save();
 
             $model->save();

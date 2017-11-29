@@ -368,7 +368,7 @@ class PembimbingController extends Controller
             $model->last_updated_by = Yii::$app->user->identity->nama;
             $model->last_updated_time = date('Y-m-d H:i:s');
 
-            $odl_pem = Pembimbing::find()
+            $old_pem = Pembimbing::find()
                 ->where(
                     ['and',
                         ['periode_dosen' => $periode_dosen],
@@ -387,14 +387,14 @@ class PembimbingController extends Controller
 
             # Send calculation to Dosen Page
             if ($old_dos->nip_nidn != $model->nip_nidn_dosen) {
-                $old_dos->total_sks_kum = $old_dos->total_sks_kum - $odl_pem->sks_kum;
-                $old_dos->total_bkd_fte = $old_dos->total_bkd_fte - $odl_pem->bkd_fte;
+                $old_dos->total_sks_kum = $old_dos->total_sks_kum - $old_pem->sks_kum;
+                $old_dos->total_bkd_fte = $old_dos->total_bkd_fte - $old_pem->bkd_fte;
                 $dos->total_sks_kum = $dos->total_sks_kum + $model->sks_kum;
                 $dos->total_bkd_fte = $dos->total_bkd_fte + $model->bkd_fte;
                 $old_dos->save();
             } else {
-                $dos->total_sks_kum = $dos->total_sks_kum + $model->sks_kum - $odl_pem->sks_kum;
-                $dos->total_bkd_fte = $dos->total_bkd_fte + $model->bkd_fte - $odl_pem->bkd_fte;
+                $dos->total_sks_kum = $dos->total_sks_kum + $model->sks_kum - $old_pem->sks_kum;
+                $dos->total_bkd_fte = $dos->total_bkd_fte + $model->bkd_fte - $old_pem->bkd_fte;
             }
             $dos->save();
 
