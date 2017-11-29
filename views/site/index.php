@@ -9,60 +9,58 @@ $this->params['breadcrumbs'][] = $this->title;
 
 	<h1 class="text-center bg-success">
 		<img src="dist/img/sijadik.png">
-    	SIJADIK FKG UI
+        <b>SIJADIK</b> FKG UI
     </h1>
+ 	<h5 class="text-center bg-success ">
+        <img src="dist/img/boxed-bg.png" height="20" width="20">
+    	Simulasi Imbal Jasa dan Jadwal Akademik Dosen Fakultas Kedokteran Gigi Universitas Indonesia
+        <img src="dist/img/boxed-bg.png" height="20" width="20">
+	</h5>
     <hr>
     <div class="body-content">
         <div class="row">
             <div class="col-lg-4">
-                <h3>Pengguna</h3>
-
-              <div class="box box-success">
-                <div class="box-body no-padding">
-                  <table class="table table-striped">
-                    <tr>
-                      <td>Nama</td>
-                      <td><?= Yii::$app->user->identity->nama ?></td>
-                    </tr>
-                    <tr>
-                      <td>NIP</td>
-                      <td><?= Yii::$app->user->identity->nip ?></td>
-                    </tr>
-                    <tr>
-                      <td>Role</td>
-                      <td><?= Yii::$app->user->identity->role ?></td>
-                    </tr>
-                    <tr>
-                      <td>Username</td>
-                      <td><?= Yii::$app->user->identity->username ?></td>
-                    </tr>
-                    <tr>
-                      <td>email</td>
-                      <td><?= Yii::$app->user->identity->email ?></td>
-                    </tr>
-                  </table>
-                </div><!-- /.box-body -->
-              </div><!-- /.box -->
+                <h3 class="text-center">Pengguna</h3>
+	            <div class="box box-success">
+	                <div class="box-body no-padding">
+	                  <table class="table table-striped">
+	                    <tr>
+	                      <td>Nama</td>
+	                      <td><?= Yii::$app->user->identity->nama ?></td>
+	                    </tr>
+	                    <tr>
+	                      <td>NIP</td>
+	                      <td><?= Yii::$app->user->identity->nip ?></td>
+	                    </tr>
+	                    <tr>
+	                      <td>Role</td>
+	                      <td><?= Yii::$app->user->identity->role ?></td>
+	                    </tr>
+	                    <tr>
+	                      <td>Username</td>
+	                      <td><?= Yii::$app->user->identity->username ?></td>
+	                    </tr>
+	                    <tr>
+	                      <td>Email</td>
+	                      <td><?= Yii::$app->user->identity->email ?></td>
+	                    </tr>
+	                  </table>
+	                </div><!-- /.box-body -->
+	            </div><!-- /.box -->
             </div>
             <div class="col-lg-8">
-                <h3>Berita/Pengumuman</h3>
-                <p>
-                	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.
-                </p>
-                <p>
-                	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.
-                </p>
+                <h3 class="text-center">Berita/Pengumuman</h3>
+				<ul style="list-style-type:circle">
+        			<!-- MAINTENANCE CODE -->
+					<li>
+					  	Ketua Program Studi (KPS) hanya dapat mengolah data yang berkaitan dengan Departemen dan Program Studi sesuai wewenangnya sebagai KPS.
+	                </li>
+					<li>
+						Periode pengisian SIJADIK berakhir 1 bulan sejak semester berjalan. Setiap KPS harap menyelesaikan pengisian sebelum periode pengisian berakhir. 
+					</li>
+        			<!-- /.MAINTENANCE CODE -->
+				</ul>  
             </div>
         </div>
     </div>
-    <hr>
- 	<h5 class="text-center bg-success ">
-    	Simulasi Imbal Jasa dan Jadwal Akademik Dosen Fakultas Kedokteran Gigi Universitas Indonesia
-	</h5>
 </div>

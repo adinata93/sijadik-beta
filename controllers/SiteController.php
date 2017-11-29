@@ -120,6 +120,7 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
+        $this->layout = 'loginLayout';
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -201,6 +202,7 @@ class SiteController extends Controller
      */
     public function actionRequestPasswordReset()
     {
+        $this->layout = 'loginLayout';
         $model = new PasswordResetRequestForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
@@ -226,6 +228,7 @@ class SiteController extends Controller
      */
     public function actionResetPassword($token)
     {
+        $this->layout = 'loginLayout';
         try {
             $model = new ResetPasswordForm($token);
         } catch (InvalidParamException $e) {
