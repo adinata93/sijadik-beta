@@ -12,6 +12,7 @@ use app\models\Dosen;
 use yii\filters\AccessControl;
 use yii\web\ForbiddenHttpException;
 use app\models\Periode;
+use yii\helpers\Url;
 
 /**
  * PembimbingController implements the CRUD actions for Pembimbing model.
@@ -297,9 +298,7 @@ class PembimbingController extends Controller
             if ($dos == null) {
                 Yii::$app->session->setFlash('danger', '<b>GAGAL UPDATE</b> <br> Input <i>Nama Dosen</i> yang diberikan belum terdaftar pada <i>Periode: ' . $model->periode_dosen . '</i>');
                 Yii::$app->session->setFlash('info', '<b>SOLUSI</b> <br> Berikan input <i>Nama Dosen</i> yang sudah terdaftar pada <i>Periode</i> tertentu jika ingin melakukan update pembimbing');
-                return $this->render('update', [
-                    'model' => $model,
-                ]);
+                return $this->redirect(Url::current());
             }
 
             # AccessControl Detail
@@ -350,9 +349,7 @@ class PembimbingController extends Controller
             if ($pem != null) {
                 Yii::$app->session->setFlash('danger', '<b>GAGAL UPDATE</b> <br> <i>' . $dos->nama_dosen . '</i> sudah memiliki jenis bimbingan <i>' . $pem->jenis_bimbingan . '</i> pada periode <i>' . $model->periode_dosen . '</i>');
                 Yii::$app->session->setFlash('info', '<b>SOLUSI</b> <br> Lakukan update <i>Jumlah Mahasiswa</i> pada data dengan filter <i>Nama Dosen: ' . $dos->nama_dosen . '</i>, <i>Jenis Bimbingan: ' . $pem->jenis_bimbingan . '</i>, dan <i>Periode: ' . $model->periode_dosen . '</i>');
-                return $this->render('update', [
-                    'model' => $model,
-                ]);
+                return $this->redirect(Url::current());
             }
 
             if ($model->sks_kum == null) {
@@ -371,21 +368,34 @@ class PembimbingController extends Controller
             $model->last_updated_by = Yii::$app->user->identity->nama;
             $model->last_updated_time = date('Y-m-d H:i:s');
 
-            $temp = Pembimbing::find()
+            $odl_pem = Pembimbing::find()
                 ->where(
                     ['and',
-                        ['periode_dosen' => $model->periode_dosen],
+                        ['periode_dosen' => $periode_dosen],
                         ['and',
-                            ['nip_nidn_dosen' => $model->nip_nidn_dosen],
-                            ['jenis_bimbingan' => $model->jenis_bimbingan]
+                            ['nip_nidn_dosen' => $nip_nidn_dosen],
+                            ['jenis_bimbingan' => $jenis_bimbingan]
                         ]
                     ]
                 )
             ->one();
-            
+
+            $old_dos = Dosen::find()->where([
+                'nip_nidn' => $nip_nidn_dosen,
+                'periode' => $periode_dosen,
+            ])->one();
+
             # Send calculation to Dosen Page
-            $dos->total_sks_kum = $dos->total_sks_kum + $model->sks_kum - $temp->sks_kum;
-            $dos->total_bkd_fte = $dos->total_bkd_fte + $model->bkd_fte - $temp->bkd_fte;
+            if ($old_dos->nip_nidn != $model->nip_nidn_dosen) {
+                $old_dos->total_sks_kum = $old_dos->total_sks_kum - $odl_pem->sks_kum;
+                $old_dos->total_bkd_fte = $old_dos->total_bkd_fte - $odl_pem->bkd_fte;
+                $dos->total_sks_kum = $dos->total_sks_kum + $model->sks_kum;
+                $dos->total_bkd_fte = $dos->total_bkd_fte + $model->bkd_fte;
+                $old_dos->save();
+            } else {
+                $dos->total_sks_kum = $dos->total_sks_kum + $model->sks_kum - $odl_pem->sks_kum;
+                $dos->total_bkd_fte = $dos->total_bkd_fte + $model->bkd_fte - $odl_pem->bkd_fte;
+            }
             $dos->save();
 
             $model->save();

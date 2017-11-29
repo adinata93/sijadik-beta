@@ -547,7 +547,7 @@ class PengajarController extends Controller
     {
         $per = Periode::find()
             ->where(
-                ['nama' => $periode]
+                ['nama' => $periode_dosen]
             )
         ->one();
 

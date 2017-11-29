@@ -12,6 +12,7 @@ use app\models\Dosen;
 use yii\filters\AccessControl;
 use yii\web\ForbiddenHttpException;
 use app\models\Periode;
+use yii\helpers\Url;
 
 /**
  * PengujiController implements the CRUD actions for Penguji model.
@@ -316,9 +317,7 @@ class PengujiController extends Controller
             if ($dos == null) {
                 Yii::$app->session->setFlash('danger', '<b>GAGAL UPDATE</b> <br> Input <i>Nama Dosen</i> yang diberikan belum terdaftar pada <i>Periode: ' . $model->periode_dosen . '</i>');
                 Yii::$app->session->setFlash('info', '<b>SOLUSI</b> <br> Berikan input <i>Nama Dosen</i> yang sudah terdaftar pada <i>Periode</i> tertentu jika ingin melakukan update penguji');
-                return $this->render('update', [
-                    'model' => $model,
-                ]);
+                return $this->redirect(Url::current());
             }
 
             # AccessControl Detail
@@ -375,9 +374,7 @@ class PengujiController extends Controller
             if ($pen != null) {
                 Yii::$app->session->setFlash('danger', '<b>GAGAL UPDATE</b> <br> <i>' . $dos->nama_dosen . '</i> sudah memiliki jenis ujian <i>' . $pen->jenis_ujian . '</i> dengan peran <i>' . $pen->peran . '</i> pada periode <i>' . $model->periode_dosen . '</i>');
                 Yii::$app->session->setFlash('info', '<b>SOLUSI</b> <br> Lakukan update <i>Jumlah Mahasiswa</i> pada data dengan filter <i>Nama Dosen: ' . $dos->nama_dosen . '</i>, <i>Jenis Ujian: ' . $pen->jenis_ujian . '</i>, <i> Peran: ' . $pen->peran . '</i>, dan <i>Periode: ' . $model->periode_dosen . '</i>');
-                return $this->render('update', [
-                    'model' => $model,
-                ]);
+                return $this->redirect(Url::current());
             }
 
             // Validation of Jenis Ujian and Peran
@@ -398,9 +395,7 @@ class PengujiController extends Controller
             } else {
                 Yii::$app->session->setFlash('danger', '<b>GAGAL UPDATE</b> <br> <i>Jenis Ujian: ' . $model->jenis_ujian . '</i> dengan <i>Peran: ' . $model->peran . '</i> tidak valid');
                 Yii::$app->session->setFlash('info', '<b>SOLUSI</b> <br> Berikan input <i>Jenis Ujian</i> dan <i>Peran</i> yang berbeda dan valid untuk menambahkan penguji baru');
-                return $this->render('create', [
-                    'model' => $model,
-                ]);
+                return $this->redirect(Url::current());
             }
 
             if ($model->sks_kum == null) {
@@ -411,23 +406,34 @@ class PengujiController extends Controller
             $model->last_updated_by = Yii::$app->user->identity->nama;
             $model->last_updated_time = date('Y-m-d H:i:s');
 
-            $temp = Penguji::find()
+            $old_pen = Penguji::find()
                 ->where(
                     ['and',
                         ['and',
-                            ['periode_dosen' => $model->periode_dosen],
-                            ['nip_nidn_dosen' => $model->nip_nidn_dosen]
+                            ['periode_dosen' => $periode_dosen],
+                            ['nip_nidn_dosen' => $nip_nidn_dosen]
                         ],
                         ['and',
-                            ['jenis_ujian' => $model->jenis_ujian],
-                            ['peran' => $model->peran]
+                            ['jenis_ujian' => $jenis_ujian],
+                            ['peran' => $peran]
                         ]
                     ]
                 )
             ->one();
-            
-            // Send calculation to Dosen Page
-            $dos->total_sks_kum = $dos->total_sks_kum + $model->sks_kum - $temp->sks_kum;
+
+            $old_dos = Dosen::find()->where([
+                'nip_nidn' => $nip_nidn_dosen,
+                'periode' => $periode_dosen,
+            ])->one();
+
+            # Send calculation to Dosen Page
+            if ($old_dos->nip_nidn != $model->nip_nidn_dosen) {
+                $old_dos->total_sks_kum = $old_dos->total_sks_kum - $old_pen->sks_kum;
+                $dos->total_sks_kum = $dos->total_sks_kum + $model->sks_kum;
+                $old_dos->save();
+            } else {
+                $dos->total_sks_kum = $dos->total_sks_kum + $model->sks_kum - $old_pen->sks_kum;
+            }
             $dos->save();
 
             $model->save();
