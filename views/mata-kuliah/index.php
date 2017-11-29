@@ -23,7 +23,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'panel'=>[
             'type'=>'success',
-            // 'heading'=> Html::a('Create Mata Kuliah', ['create'], ['class' => 'btn btn-success']),
             'footer'=>false,
             'beforeOptions'=>['class'=>'grid_panel_remove'],
             'afterOptions'=>['class'=>'grid_panel_remove'],

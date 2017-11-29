@@ -126,16 +126,14 @@ class MataKuliahController extends Controller
                         ['periode' => $model->periode],
                         ['and',
                             ['nama' => $model->nama],
-                            ['jenis' => $model->jenis]
                         ]
                     ]
                 )
             ->one();
 
             if ($matkul != null) {
-                Yii::$app->session->setFlash('danger', '<b>GAGAL CREATE</b> <br> Mata kuliah <i>' . $model->nama . '</i> dengan jenis <i>' . $model->jenis . '</i> pada periode <i>' . $model->periode . '</i> sudah ada');
-                Yii::$app->session->setFlash('info', '<b>SOLUSI</b> <br> Berikan input <i>Periode</i>, <i>Nama Mata Kuliah</i>, dan <i>Jenis Mata Kuliah</i> yang berbeda jika ingin menambahkan mata kuliah baru');
-                
+                Yii::$app->session->setFlash('danger', '<b>GAGAL CREATE</b> <br> Mata kuliah <i>' . $model->nama . '</i> pada periode <i>' . $model->periode . '</i> sudah ada');
+                Yii::$app->session->setFlash('info', '<b>SOLUSI</b> <br> Berikan input <i>Periode</i> dan <i>Nama Mata Kuliah</i> yang berbeda jika ingin menambahkan mata kuliah baru');
                 return $this->render('create', [
                     'model' => $model,
                 ]);
@@ -317,9 +315,8 @@ class MataKuliahController extends Controller
             ->one();
 
             if ($matkul != null) {
-                Yii::$app->session->setFlash('danger', '<b>GAGAL UPDATE</b> <br> Mata kuliah <i>' . $model->nama . '</i> dengan jenis <i>' . $model->jenis . '</i> pada periode <i>' . $model->periode . '</i> sudah ada');
-                Yii::$app->session->setFlash('info', '<b>SOLUSI</b> <br> Berikan input <i>Periode</i>, <i>Nama Mata Kuliah</i>, dan <i>Jenis Mata Kuliah</i> yang berbeda jika ingin menambahkan mata kuliah baru');
-                
+                Yii::$app->session->setFlash('danger', '<b>GAGAL UPDATE</b> <br> Mata kuliah <i>' . $model->nama . '</i> pada periode <i>' . $model->periode . '</i> sudah ada');
+                Yii::$app->session->setFlash('info', '<b>SOLUSI</b> <br> Berikan input <i>Periode</i> dan <i>Nama Mata Kuliah</i> yang berbeda jika ingin melakukan update mata kuliah');
                 return $this->render('update', [
                     'model' => $model,
                 ]);
