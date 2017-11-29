@@ -11,8 +11,10 @@ use yii\filters\VerbFilter;
 use app\models\Dosen;
 use app\models\Periode;
 use app\models\MataKuliah;
+use app\models\Pengajar;
 use yii\web\ForbiddenHttpException;
 use yii\filters\AccessControl;
+use yii\helpers\Url;
 
 /**
  * JadwalController implements the CRUD actions for Jadwal model.
@@ -225,7 +227,21 @@ class JadwalController extends Controller
                 return $this->render('create', [
                     'model' => $model,
                 ]);
-            } else {
+            } 
+
+            $pen = Pengajar::find()
+                ->where(
+                    ['and',
+                        ['periode_dosen' => $model->periode_dosen_pengajar],
+                        ['and',
+                            ['nip_nidn_dosen' => $model->nip_nidn_dosen_pengajar],
+                            ['nama_mata_kuliah' => $model->nama_mata_kuliah_pengajar]
+                        ]
+                    ]
+                )
+            ->one();
+
+            if ($pen == null) {
                 Yii::$app->session->setFlash('danger', '<b>GAGAL CREATE</b> <br> Input <i>Nama Dosen</i> yang diberikan tidak terdaftar sebagai pengajar <i>Mata Kuliah: ' . $matkul->nama . '</i>');
                 Yii::$app->session->setFlash('info', '<b>SOLUSI</b> <br> Berikan input <i>Nama Dosen</i> yang sudah terdaftar pada <i>Mata Kuliah</i> tertentu jika ingin menambahkan jadwal baru');
                 return $this->render('create', [
@@ -357,9 +373,7 @@ class JadwalController extends Controller
             if ($dos == null) {
                 Yii::$app->session->setFlash('danger', '<b>GAGAL UPDATE</b> <br> Input <i>Nama Dosen</i> yang diberikan tidak terdaftar pada <i>Periode: ' . $model->periode_dosen_pengajar . '</i>');
                 Yii::$app->session->setFlash('info', '<b>SOLUSI</b> <br> Berikan input <i>Nama Dosen</i> yang sudah terdaftar pada <i>Periode</i> tertentu jika ingin melakukan update jadwal');
-                return $this->render('update', [
-                    'model' => $model,
-                ]);
+                return $this->redirect(Url::current());
             }
 
             $matkul = MataKuliah::find()->where(['nama' => $model->nama_mata_kuliah_pengajar])->one();
@@ -457,10 +471,8 @@ class JadwalController extends Controller
 
             if ($model->jadwal_start > $model->jadwal_end) {
                 Yii::$app->session->setFlash('danger', "<b>GAGAL UPDATE</b> <br> input <i>Jadwal Start</i> dan <i>Jadwal End</i> tidak valid");
-                Yii::$app->session->setFlash('info', '<b>SOLUSI</b> <br> Berikan input <i>Jadwal Start</i> yang lebih kecil dari input <i>Jadwal End</i> untuk menambahkan jadwal baru');
-                return $this->render('update', [
-                    'model' => $model,
-                ]);
+                Yii::$app->session->setFlash('info', '<b>SOLUSI</b> <br> Berikan input <i>Jadwal Start</i> yang lebih kecil dari input <i>Jadwal End</i> untuk melakukan update jadwal');
+                return $this->redirect(Url::current());
             }
 
             if ($jad != null) {
@@ -470,15 +482,25 @@ class JadwalController extends Controller
                 }
                 Yii::$app->session->setFlash('danger', $print);
                 Yii::$app->session->setFlash('info', '<b>SOLUSI</b> <br> Berikan input <i>Jadwal Start</i> dan <i>Jadwal End</i> yang berbeda dan tidak memiliki konflik untuk melakukan update jadwal');
-                return $this->render('update', [
-                    'model' => $model,
-                ]);
-            } else {
+                return $this->redirect(Url::current());
+            } 
+
+            $pen = Pengajar::find()
+                ->where(
+                    ['and',
+                        ['periode_dosen' => $model->periode_dosen_pengajar],
+                        ['and',
+                            ['nip_nidn_dosen' => $model->nip_nidn_dosen_pengajar],
+                            ['nama_mata_kuliah' => $model->nama_mata_kuliah_pengajar]
+                        ]
+                    ]
+                )
+            ->one();
+
+            if ($pen == null) {
                 Yii::$app->session->setFlash('danger', '<b>GAGAL UPDATE</b> <br> Input <i>Nama Dosen</i> yang diberikan tidak terdaftar sebagai pengajar <i>Mata Kuliah: ' . $matkul->nama . '</i>');
                 Yii::$app->session->setFlash('info', '<b>SOLUSI</b> <br> Berikan input <i>Nama Dosen</i> yang sudah terdaftar pada <i>Mata Kuliah</i> tertentu jika ingin melakukan update jadwal');
-                return $this->render('update', [
-                    'model' => $model,
-                ]);                
+                return $this->redirect(Url::current());
             }
 
             $model->periode_mata_kuliah_pengajar = $model->periode_dosen_pengajar;

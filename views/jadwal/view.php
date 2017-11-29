@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="jadwal-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1 style="margin-top: 0"><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id, 'periode_dosen_pengajar' => $model->periode_dosen_pengajar, 'departemen_dosen_pengajar' => $model->departemen_dosen_pengajar, 'nip_nidn_dosen_pengajar' => $model->nip_nidn_dosen_pengajar, 'periode_mata_kuliah_pengajar' => $model->periode_mata_kuliah_pengajar, 'program_studi_mata_kuliah_pengajar' => $model->program_studi_mata_kuliah_pengajar, 'kategori_koefisien_program_studi_mata_kuliah_pengajar' => $model->kategori_koefisien_program_studi_mata_kuliah_pengajar, 'nama_mata_kuliah_pengajar' => $model->nama_mata_kuliah_pengajar, 'jenis_mata_kuliah_pengajar' => $model->jenis_mata_kuliah_pengajar], ['class' => 'btn btn-primary']) ?>

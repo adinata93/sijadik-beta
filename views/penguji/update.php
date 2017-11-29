@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="penguji-update">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1 style="margin-top: 0"><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
         'model' => $model,
