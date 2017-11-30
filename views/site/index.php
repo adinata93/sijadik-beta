@@ -8,13 +8,13 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="mata-kuliah-index">
 
 	<h1 class="text-center bg-success">
-		<img src="dist/img/sijadik.png">
+        <img src="dist/img/boxed-bg.png" height="80" width="0">
+		<img src="dist/img/sijadik.png" height="64" width="64">
         <b>SIJADIK</b> FKG UI
     </h1>
  	<h5 class="text-center bg-success ">
-        <img src="dist/img/boxed-bg.png" height="20" width="20">
+        <img src="dist/img/boxed-bg.png" height="32" width="0">
     	Simulasi Imbal Jasa dan Jadwal Akademik Dosen Fakultas Kedokteran Gigi Universitas Indonesia
-        <img src="dist/img/boxed-bg.png" height="20" width="20">
 	</h5>
     <hr>
     <div class="body-content">

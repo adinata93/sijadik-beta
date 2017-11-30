@@ -80,10 +80,10 @@ class PeriodeController extends Controller
                                 (Yii::$app->user->identity->role=='KPS Sp BM') ||
                                 (Yii::$app->user->identity->role=='KPS Sp IKGA') ||
                                 (Yii::$app->user->identity->role=='KPS Sp IPM') ||
-                                (Yii::$app->user->identity->role=='KPS Konservasi') ||
-                                (Yii::$app->user->identity->role=='KPS Orto') ||
-                                (Yii::$app->user->identity->role=='KPS Perio') ||
-                                (Yii::$app->user->identity->role=='KPS Prosto')
+                                (Yii::$app->user->identity->role=='KPS Sp Konservasi') ||
+                                (Yii::$app->user->identity->role=='KPS Sp Orto') ||
+                                (Yii::$app->user->identity->role=='KPS Sp Perio') ||
+                                (Yii::$app->user->identity->role=='KPS Sp Prosto')
                             );
                         }
                     ],
