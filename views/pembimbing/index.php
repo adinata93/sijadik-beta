@@ -77,6 +77,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute'=>'nip_nidn_dosen',
                 'value'=>'periodeDosen.nama_dosen',
                 'group'=>true,
+                'subGroupOf'=>2,
             ],
             'jenis_bimbingan',
             [
