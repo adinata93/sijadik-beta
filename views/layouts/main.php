@@ -88,6 +88,19 @@ AppAsset::register($this);
 
           <!-- Sidebar Menu -->
           <ul class="sidebar-menu">
+            <?php 
+                $temp = stripos(Url::current(), 'site%2Findex');
+                if ($temp == true) {
+                    echo '<li class="active">';
+                } else {
+                    echo '<li>';
+                }
+            ?>
+              <a href="index.php?r=site%2Findex">
+                <i class="fa fa-home"></i>
+                <span>Home</span>
+              </a>
+            </li>
             <li class="header">IMBAL JASA DAN JADWAL</li>
             <?php 
                 $temp = stripos(Url::current(), 'dosen');

@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="kategori-koefisien-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1 style="margin-top: 0"><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->nama], ['class' => 'btn btn-primary']) ?>
