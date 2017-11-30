@@ -37,7 +37,7 @@ AppAsset::register($this);
         <!-- Logo -->
         <a href=<?= Yii::$app->homeUrl ?> class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><img src="dist/img/icon.png" height="20" width="20"></span>
+          <span class="logo-mini"><img src="dist/img/icon.png" height="24" width="24"></span>
           <!-- logo for regular state and mobile devices -->
           <span class="logo-lg"><b>SIJADIK</b></span>
         </a>
@@ -53,13 +53,20 @@ AppAsset::register($this);
                 'options' => ['class' => 'navbar-custom-menu'],
                 'items' => [
                     Yii::$app->user->isGuest ? (
-                        ['label' => 'Login', 'url' => ['/site/login']]
+                        '<li>'
+                        . Html::beginForm(['/site/login'], 'post')
+                        . Html::submitButton(
+                            '<i class="glyphicon glyphicon-log-in"></i> Login Here',
+                            ['class' => 'logout btn btn-danger']
+                        )
+                        . Html::endForm()
+                        . '</li>'
                     ) : (
                         '<li>'
                         . Html::beginForm(['/site/logout'], 'post')
                         . Html::submitButton(
                             '<i class="glyphicon glyphicon-log-out"></i> Logout (' . Yii::$app->user->identity->username . ')',
-                            ['class' => 'logout btn btn-success']
+                            ['class' => 'logout btn btn-danger']
                         )
                         . Html::endForm()
                         . '</li>'
