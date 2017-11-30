@@ -4,8 +4,53 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b94896af7f6ddf8a4d1693fc9e4cbea8",
+    "content-hash": "e4688de9afee0c9246b66b5f254e36e7",
     "packages": [
+        {
+            "name": "bluezed/yii2-scroll-top",
+            "version": "v1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bluezed/yii2-scroll-top.git",
+                "reference": "3e3ca28df6762df92770a99a5af3b0df3e26e91c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bluezed/yii2-scroll-top/zipball/3e3ca28df6762df92770a99a5af3b0df3e26e91c",
+                "reference": "3e3ca28df6762df92770a99a5af3b0df3e26e91c",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "bluezed\\scrollTop\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Thomas Geppert",
+                    "email": "bluezed.apps@gmail.com"
+                }
+            ],
+            "description": "This Yii 2 widget adds a simple scroll-to-top button to your site.",
+            "keywords": [
+                "button",
+                "extension",
+                "scroll",
+                "scroll-to",
+                "scroll-to-top",
+                "top",
+                "yii2"
+            ],
+            "time": "2016-05-11T16:49:46+00:00"
+        },
         {
             "name": "bower-asset/bootstrap",
             "version": "v3.3.7",

@@ -48,13 +48,9 @@ class PengujiSearch extends Penguji
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'sort'=> [
-                'defaultOrder' => [
-                    'periode_dosen'=>SORT_ASC,
-                    'departemen_dosen'=>SORT_ASC,
-                    'nip_nidn_dosen'=>SORT_ASC,
-                ]
-            ]
+            'pagination' => [
+                'pageSize' => 10,
+            ],
         ]);
 
         $this->load($params);

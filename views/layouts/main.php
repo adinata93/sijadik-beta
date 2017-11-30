@@ -150,6 +150,19 @@ AppAsset::register($this);
               </a>
             </li>
             <?php 
+                $temp = stripos(Url::current(), 'mata-kuliah');
+                if ($temp == true) {
+                    echo '<li class="active">';
+                } else {
+                    echo '<li>';
+                }
+            ?>
+              <a href="index.php?r=mata-kuliah%2Findex">
+                <i class="fa fa-book"></i>
+                <span>Mata Kuliah</span> 
+              </a>
+            </li>
+            <?php 
                 $temp = stripos(Url::current(), 'pengajar');
                 if ($temp == true) {
                     echo '<li class="active">';
@@ -173,19 +186,6 @@ AppAsset::register($this);
               <a href="index.php?r=jadwal%2Findex">
                 <i class="fa fa-calendar"></i>
                 <span>Jadwal Pengajar</span> 
-              </a>
-            </li>
-            <?php 
-                $temp = stripos(Url::current(), 'mata-kuliah');
-                if ($temp == true) {
-                    echo '<li class="active">';
-                } else {
-                    echo '<li>';
-                }
-            ?>
-              <a href="index.php?r=mata-kuliah%2Findex">
-                <i class="fa fa-book"></i>
-                <span>Mata Kuliah</span> 
               </a>
             </li>
             <li class="header">SETTINGS</li>
@@ -274,7 +274,7 @@ AppAsset::register($this);
     
     </div><!-- ./wrapper -->
 
-
+    <?= \bluezed\scrollTop\ScrollTop::widget() ?>
     <?php $this->endBody() ?>
   </body>
 </html>

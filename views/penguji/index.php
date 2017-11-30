@@ -23,11 +23,26 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'panel'=>[
             'type'=>'success',
-            'footer'=>false,
-            'beforeOptions'=>['class'=>'grid_panel_remove'],
-            'afterOptions'=>['class'=>'grid_panel_remove'],
+            'before' => false,
+            'after' => false,
         ],
-        'toolbar' => false,
+        'panelHeadingTemplate' => '{summary}{toggleData}',
+        'toggleDataContainer' => ['class' => 'btn-group-xs text-right'],
+        'summaryOptions' => ['class' => 'pull-left'],
+        'toggleDataOptions' => [
+            'all' => [
+                'icon' => 'resize-full',
+                'label' => 'Show All Data',
+                'class' => 'btn btn-primary',
+                'title' => ''
+            ],
+            'page' => [
+                'icon' => 'resize-small',
+                'label' => 'Show Data by Pages',
+                'class' => 'btn btn-primary',
+                'title' => ''
+            ],
+        ],
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'striped' => false,
@@ -76,7 +91,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'group'=>true,
                 'subGroupOf'=>2,
             ],
-            'jenis_ujian',
+            [
+                'attribute'=>'jenis_ujian',
+                'group'=>true,
+                'subGroupOf'=>3,
+            ],
             'peran',
             [
                 'attribute'=>'jumlah_mahasiswa',

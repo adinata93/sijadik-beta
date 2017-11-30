@@ -34,11 +34,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'icon' => 'resize-full',
                 'label' => 'Show All Data',
                 'class' => 'btn btn-primary',
+                'title' => ''
             ],
             'page' => [
                 'icon' => 'resize-small',
                 'label' => 'Show Data by Pages',
                 'class' => 'btn btn-primary',
+                'title' => ''
             ],
         ],
         'dataProvider' => $dataProvider,

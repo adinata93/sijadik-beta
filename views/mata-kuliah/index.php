@@ -23,11 +23,26 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'panel'=>[
             'type'=>'success',
-            'footer'=>false,
-            'beforeOptions'=>['class'=>'grid_panel_remove'],
-            'afterOptions'=>['class'=>'grid_panel_remove'],
+            'before' => false,
+            'after' => false,
         ],
-        'toolbar' => false,
+        'panelHeadingTemplate' => '{summary}{toggleData}',
+        'toggleDataContainer' => ['class' => 'btn-group-xs text-right'],
+        'summaryOptions' => ['class' => 'pull-left'],
+        'toggleDataOptions' => [
+            'all' => [
+                'icon' => 'resize-full',
+                'label' => 'Show All Data',
+                'class' => 'btn btn-primary',
+                'title' => ''
+            ],
+            'page' => [
+                'icon' => 'resize-small',
+                'label' => 'Show Data by Pages',
+                'class' => 'btn btn-primary',
+                'title' => ''
+            ],
+        ],
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'striped' => false,
@@ -49,29 +64,34 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute'=>'fakultas_unit_pengajaran',
                 // 'group'=>true,
+                'subGroupOf'=>1,
             ],
             [
                 'attribute'=>'kode_organisasi',
                 // 'group'=>true,
+                'subGroupOf'=>2,
             ],
             [
                 'attribute'=>'program_studi',
                 // 'group'=>true,
+                'subGroupOf'=>2,
             ],
             [
                 'attribute'=>'jenjang',
                 // 'group'=>true,
+                'subGroupOf'=>4,
             ],
             [
                 'attribute'=>'program',
                 // 'group'=>true,
+                'subGroupOf'=>4,
             ],
             // 'kategori_koefisien_program_studi',
+            'nama',
             [
                 'attribute'=>'jenis',
                 // 'group'=>true,
             ],
-            'nama',
             'kode_kelas',
             // 'jenis_kelas',
             // 'last_updated_by',

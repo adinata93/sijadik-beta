@@ -48,14 +48,9 @@ class PengajarSearch extends Pengajar
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'sort'=> [
-                'defaultOrder' => [
-                    'periode_dosen'=>SORT_ASC,
-                    'departemen_dosen'=>SORT_ASC,
-                    'nip_nidn_dosen'=>SORT_ASC,
-                    'jenis_mata_kuliah'=>SORT_ASC,
-                ]
-            ]
+            'pagination' => [
+                'pageSize' => 10,
+            ],
         ]);
 
         $this->load($params);
