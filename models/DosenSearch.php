@@ -47,12 +47,9 @@ class DosenSearch extends Dosen
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'sort'=> [
-                'defaultOrder' => [
-                    'periode'=>SORT_ASC,
-                    'departemen'=>SORT_ASC,
-                ]
-            ]
+            'pagination' => [
+                'pageSize' => 10,
+            ],
         ]);
 
         $this->load($params);

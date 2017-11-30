@@ -120,7 +120,7 @@ AppAsset::register($this);
               <a href="index.php?r=dosen%2Findex">
                 <i class="fa fa-user-md"></i>
                 <span>Dosen</span>
-                <small class="label pull-right bg-blue">Summary</small>
+                <small class="label pull-right bg-primary">Rp</i></small>
               </a>
             </li>
             <?php 
@@ -134,7 +134,6 @@ AppAsset::register($this);
               <a href="index.php?r=pembimbing%2Findex">
                 <i class="fa fa-road"></i>
                 <span>Pembimbing</span>
-                <small class="label pull-right text-blue"><i class="fa fa-circle-o"></i></small>
               </a>
             </li>
             <?php 
@@ -148,7 +147,6 @@ AppAsset::register($this);
               <a href="index.php?r=penguji%2Findex">
                 <i class="fa fa-balance-scale"></i>
                 <span>Penguji</span> 
-                <small class="label pull-right text-blue"><i class="fa fa-circle-o"></i></small>
               </a>
             </li>
             <?php 
@@ -162,10 +160,8 @@ AppAsset::register($this);
               <a href="index.php?r=pengajar%2Findex">
                 <i class="glyphicon glyphicon-education"></i>
                 <span>Pengajar</span> 
-                <small class="label pull-right text-blue"><i class="fa fa-circle-o"></i></small>
               </a>
             </li>
-            <!-- <li class="header">JADWAL AKADEMIK</li> -->
             <?php 
                 $temp = stripos(Url::current(), 'jadwal');
                 if ($temp == true) {

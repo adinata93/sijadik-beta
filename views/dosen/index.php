@@ -23,11 +23,24 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'panel'=>[
             'type'=>'success',
-            'footer'=>false,
-            'beforeOptions'=>['class'=>'grid_panel_remove'],
-            'afterOptions'=>['class'=>'grid_panel_remove'],
+            'before' => false,
+            'after' => false,
         ],
-        'toolbar' => false,
+        'panelHeadingTemplate' => '{summary}{toggleData}',
+        'toggleDataContainer' => ['class' => 'btn-group-xs text-right'],
+        'summaryOptions' => ['class' => 'pull-left'],
+        'toggleDataOptions' => [
+            'all' => [
+                'icon' => 'resize-full',
+                'label' => 'Show All Data',
+                'class' => 'btn btn-primary',
+            ],
+            'page' => [
+                'icon' => 'resize-small',
+                'label' => 'Show Data by Pages',
+                'class' => 'btn btn-primary',
+            ],
+        ],
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'striped' => false,
@@ -54,7 +67,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'group'=>true,
                 'groupFooter'=>function ($model, $key, $index, $widget) { // Closure method
                     return [
-                        'mergeColumns'=>[[2,3]], // columns to merge in summary
+                        'mergeColumns'=>[[2,4]], // columns to merge in summary
                         'content'=>[             // content to show in each summary cell
                             2=>'Summary (' . $model->departemen . ')',
                             5=>GridView::F_SUM,
