@@ -66,7 +66,7 @@ AppAsset::register($this);
                         . Html::beginForm(['/site/logout'], 'post')
                         . Html::submitButton(
                             '<i class="glyphicon glyphicon-log-out"></i> Logout (' . Yii::$app->user->identity->username . ')',
-                            ['class' => 'logout btn btn-danger']
+                            ['class' => 'logout btn btn-success']
                         )
                         . Html::endForm()
                         . '</li>'
