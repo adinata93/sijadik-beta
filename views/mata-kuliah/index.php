@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'attribute'=>'periode',
-                // 'group'=>true,
+                'group'=>true,
                 'filterType'=>GridView::FILTER_SELECT2,
                 'filter' => ArrayHelper::map(Periode::find()->all(),'nama','nama'),
                 'filterWidgetOptions'=>[
@@ -61,30 +61,30 @@ $this->params['breadcrumbs'][] = $this->title;
                     'options' => ['placeholder' => 'Select periode'],
                 ],
             ],
-            [
-                'attribute'=>'fakultas_unit_pengajaran',
-                // 'group'=>true,
-                'subGroupOf'=>1,
-            ],
+            // [
+            //     'attribute'=>'fakultas_unit_pengajaran',
+            //     // 'group'=>true,
+            //     // 'subGroupOf'=>1,
+            // ],
             [
                 'attribute'=>'kode_organisasi',
                 // 'group'=>true,
-                'subGroupOf'=>2,
+                // 'subGroupOf'=>2,
             ],
             [
                 'attribute'=>'program_studi',
                 // 'group'=>true,
-                'subGroupOf'=>2,
+                // 'subGroupOf'=>2,
             ],
             [
                 'attribute'=>'jenjang',
                 // 'group'=>true,
-                'subGroupOf'=>4,
+                // 'subGroupOf'=>4,
             ],
             [
                 'attribute'=>'program',
                 // 'group'=>true,
-                'subGroupOf'=>4,
+                // 'subGroupOf'=>4,
             ],
             // 'kategori_koefisien_program_studi',
             'nama',

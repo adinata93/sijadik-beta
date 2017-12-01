@@ -36,7 +36,12 @@ use kartik\datetime\DateTimePicker;
     ]) ?>
 
     <?= $form->field($model, 'nama_mata_kuliah_pengajar')->widget(Select2::classname(), [
-        'data' => ArrayHelper::map(MataKuliah::find()->all(),'nama','nama'),
+        'data' => ArrayHelper::map(
+            MataKuliah::find()
+                ->where(
+                    ['not like', 'jenis', 'Narasumber']
+                )
+            ->all(),'nama','nama'),
         'options' => ['placeholder' => 'Search nama mata kuliah'],
         'pluginOptions' => [
             'allowClear' => true
