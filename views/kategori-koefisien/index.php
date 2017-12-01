@@ -21,9 +21,25 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'panel'=>[
             'type'=>'success',
-            'footer'=>false,
-            'beforeOptions'=>['class'=>'grid_panel_remove'],
-            'afterOptions'=>['class'=>'grid_panel_remove'],
+            'before' => false,
+            'after' => false,
+        ],
+        'panelHeadingTemplate' => '{summary}{toggleData}',
+        'toggleDataContainer' => ['class' => 'btn-group-xs text-right'],
+        'summaryOptions' => ['class' => 'pull-left'],
+        'toggleDataOptions' => [
+            'all' => [
+                'icon' => 'resize-full',
+                'label' => 'Show All Data',
+                'class' => 'btn btn-primary',
+                'title' => ''
+            ],
+            'page' => [
+                'icon' => 'resize-small',
+                'label' => 'Show Data by Pages',
+                'class' => 'btn btn-primary',
+                'title' => ''
+            ],
         ],
         'toolbar' => false,
         'dataProvider' => $dataProvider,

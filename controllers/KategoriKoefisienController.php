@@ -50,27 +50,13 @@ class KategoriKoefisienController extends Controller
                         'actions' => [
                             'index',
                             'view',
-                            'create',
-                            'update',
                         ],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback'=>function(){
                             return (
                                 (Yii::$app->user->identity->role=='Manajer Pendidikan') ||
-                                (Yii::$app->user->identity->role=='Manajer Umum')
-                            );
-                        }
-                    ],
-                    [
-                        'actions' => [
-                            'index',
-                            'view',
-                        ],
-                        'allow' => true,
-                        'roles' => ['@'],
-                        'matchCallback'=>function(){
-                            return (
+                                (Yii::$app->user->identity->role=='Manajer Umum') ||
                                 (Yii::$app->user->identity->role=='KPS Profesi') ||
                                 (Yii::$app->user->identity->role=='KPS S1') ||
                                 (Yii::$app->user->identity->role=='KPS S2 IKGD') ||
@@ -134,7 +120,6 @@ class KategoriKoefisienController extends Controller
         $model = new KategoriKoefisien();
 
         if ($model->load(Yii::$app->request->post())) {
-
             $kk = KategoriKoefisien::find()
                 ->where(
                     ['nama' => $model->nama]
@@ -171,7 +156,6 @@ class KategoriKoefisienController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            
             $kk = KategoriKoefisien::find()
                 ->where(
                     ['and',
@@ -183,7 +167,7 @@ class KategoriKoefisienController extends Controller
 
             if ($kk != null) {
                 Yii::$app->session->setFlash('danger', '<b>GAGAL UPDATE</b> <br>Kategori Koefisien dengan <i> Nama: ' . $kk->nama . '</i> sudah ada');
-                Yii::$app->session->setFlash('info', '<b>SOLUSI</b> <br> Berikan input <i>Nama</i> yang berbeda untuk menambahkan kategori koefisien baru');
+                Yii::$app->session->setFlash('info', '<b>SOLUSI</b> <br> Berikan input <i>Nama</i> yang berbeda untuk melakukan update kategori koefisien');
                 return $this->render('update', [
                     'model' => $model,
                 ]);

@@ -51,27 +51,13 @@ class PeriodeController extends Controller
                         'actions' => [
                             'index',
                             'view',
-                            'create',
-                            'update',
                         ],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback'=>function(){
                             return (
                                 (Yii::$app->user->identity->role=='Manajer Pendidikan') ||
-                                (Yii::$app->user->identity->role=='Manajer Umum')
-                            );
-                        }
-                    ],
-                    [
-                        'actions' => [
-                            'index',
-                            'view',
-                        ],
-                        'allow' => true,
-                        'roles' => ['@'],
-                        'matchCallback'=>function(){
-                            return (
+                                (Yii::$app->user->identity->role=='Manajer Umum') ||
                                 (Yii::$app->user->identity->role=='KPS Profesi') ||
                                 (Yii::$app->user->identity->role=='KPS S1') ||
                                 (Yii::$app->user->identity->role=='KPS S2 IKGD') ||
@@ -134,16 +120,7 @@ class PeriodeController extends Controller
     {
         $model = new Periode();
 
-        if ($model->load(Yii::$app->request->post())) {
-
-            if ($model->is_locked == 'Locked') {
-                if (Yii::$app->user->identity->role=='Tenaga Kependidikan SDM') {
-                    true;
-                } else {
-                    throw new ForbiddenHttpException('You are not allowed to perform this action.');
-                }
-            }
-            
+        if ($model->load(Yii::$app->request->post())) {            
             $per = Periode::find()
                 ->where(
                     ['nama' => $model->nama]
@@ -179,17 +156,7 @@ class PeriodeController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post())) {
-            $per = Periode::find()->where(['nama' => $id])->one();
-
-            if ($model->is_locked != $per->is_locked) {
-                if (Yii::$app->user->identity->role=='Tenaga Kependidikan SDM') {
-                    true;
-                } else {
-                    throw new ForbiddenHttpException('You are not allowed to perform this action.');
-                }
-            }
-            
+        if ($model->load(Yii::$app->request->post())) {            
             $per = Periode::find()
                 ->where(
                     ['and',
@@ -201,7 +168,7 @@ class PeriodeController extends Controller
 
             if ($per != null) {
                 Yii::$app->session->setFlash('danger', '<b>GAGAL UPDATE</b> <br>Peride dengan <i> Nama: ' . $per->nama . '</i> sudah ada');
-                Yii::$app->session->setFlash('info', '<b>SOLUSI</b> <br> Berikan input <i>Nama</i> yang berbeda untuk menambahkan periode baru');
+                Yii::$app->session->setFlash('info', '<b>SOLUSI</b> <br> Berikan input <i>Nama</i> yang berbeda untuk melakukan update periode');
                 return $this->render('update', [
                     'model' => $model,
                 ]);
@@ -226,8 +193,12 @@ class PeriodeController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        if ($model->is_locked == 'Locked') {
+            throw new ForbiddenHttpException('You are not allowed to perform this action.');
+        }
 
+        $model->delete();
         return $this->redirect(['index']);
     }
 

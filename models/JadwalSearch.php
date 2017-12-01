@@ -47,14 +47,9 @@ class JadwalSearch extends Jadwal
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'sort'=> [
-                'defaultOrder' => [
-                    'periode_dosen_pengajar'=>SORT_ASC,
-                    'departemen_dosen_pengajar'=>SORT_ASC,
-                    'nip_nidn_dosen_pengajar'=>SORT_ASC,
-                    'nama_mata_kuliah_pengajar'=>SORT_ASC,
-                ]
-            ]
+            'pagination' => [
+                'pageSize' => 10,
+            ],
         ]);
 
         $this->load($params);

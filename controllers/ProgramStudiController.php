@@ -50,27 +50,13 @@ class ProgramStudiController extends Controller
                         'actions' => [
                             'index',
                             'view',
-                            'create',
-                            'update',
                         ],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback'=>function(){
                             return (
                                 (Yii::$app->user->identity->role=='Manajer Pendidikan') ||
-                                (Yii::$app->user->identity->role=='Manajer Umum')
-                            );
-                        }
-                    ],
-                    [
-                        'actions' => [
-                            'index',
-                            'view',
-                        ],
-                        'allow' => true,
-                        'roles' => ['@'],
-                        'matchCallback'=>function(){
-                            return (
+                                (Yii::$app->user->identity->role=='Manajer Umum') ||
                                 (Yii::$app->user->identity->role=='KPS Profesi') ||
                                 (Yii::$app->user->identity->role=='KPS S1') ||
                                 (Yii::$app->user->identity->role=='KPS S2 IKGD') ||
@@ -135,7 +121,6 @@ class ProgramStudiController extends Controller
         $model = new ProgramStudi();
 
         if ($model->load(Yii::$app->request->post())) {
-
             $ps = ProgramStudi::find()
                 ->where(
                     ['nama' => $model->nama]
@@ -173,7 +158,6 @@ class ProgramStudiController extends Controller
         $model = $this->findModel($kategori_koefisien, $nama);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            
             $ps = ProgramStudi::find()
                 ->where(
                     ['and',
@@ -185,7 +169,7 @@ class ProgramStudiController extends Controller
 
             if ($ps != null) {
                 Yii::$app->session->setFlash('danger', '<b>GAGAL UPDATE</b> <br>Program Studi dengan <i> Nama: ' . $ps->nama . '</i> sudah ada');
-                Yii::$app->session->setFlash('info', '<b>SOLUSI</b> <br> Berikan input <i>Nama</i> yang berbeda untuk menambahkan program studi baru');
+                Yii::$app->session->setFlash('info', '<b>SOLUSI</b> <br> Berikan input <i>Nama</i> yang berbeda untuk melakukan update program studi');
                 return $this->render('update', [
                     'model' => $model,
                 ]);

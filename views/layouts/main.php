@@ -96,7 +96,7 @@ AppAsset::register($this);
           <!-- Sidebar Menu -->
           <ul class="sidebar-menu">
             <?php 
-                $temp = stripos(Url::current(), 'site%2Findex');
+                $temp = stripos(Url::current(), 'index.php?r=site%2Findex');
                 if ($temp == true) {
                     echo '<li class="active">';
                 } else {
@@ -110,7 +110,7 @@ AppAsset::register($this);
             </li>
             <li class="header">IMBAL JASA DAN JADWAL</li>
             <?php 
-                $temp = stripos(Url::current(), 'dosen');
+                $temp = stripos(Url::current(), 'index.php?r=dosen');
                 if ($temp == true) {
                     echo '<li class="active">';
                 } else {
@@ -124,7 +124,7 @@ AppAsset::register($this);
               </a>
             </li>
             <?php 
-                $temp = stripos(Url::current(), 'pembimbing');
+                $temp = stripos(Url::current(), 'index.php?r=pembimbing');
                 if ($temp == true) {
                     echo '<li class="active">';
                 } else {
@@ -137,7 +137,7 @@ AppAsset::register($this);
               </a>
             </li>
             <?php 
-                $temp = stripos(Url::current(), 'penguji');
+                $temp = stripos(Url::current(), 'index.php?r=penguji');
                 if ($temp == true) {
                     echo '<li class="active">';
                 } else {
@@ -150,7 +150,7 @@ AppAsset::register($this);
               </a>
             </li>
             <?php 
-                $temp = stripos(Url::current(), 'mata-kuliah');
+                $temp = stripos(Url::current(), 'index.php?r=mata-kuliah');
                 if ($temp == true) {
                     echo '<li class="active">';
                 } else {
@@ -163,7 +163,7 @@ AppAsset::register($this);
               </a>
             </li>
             <?php 
-                $temp = stripos(Url::current(), 'pengajar');
+                $temp = stripos(Url::current(), 'index.php?r=pengajar');
                 if ($temp == true) {
                     echo '<li class="active">';
                 } else {
@@ -176,7 +176,7 @@ AppAsset::register($this);
               </a>
             </li>
             <?php 
-                $temp = stripos(Url::current(), 'jadwal');
+                $temp = stripos(Url::current(), 'index.php?r=jadwal');
                 if ($temp == true) {
                     echo '<li class="active">';
                 } else {
@@ -190,7 +190,7 @@ AppAsset::register($this);
             </li>
             <li class="header">SETTINGS</li>
             <?php 
-                $temp = stripos(Url::current(), 'periode');
+                $temp = stripos(Url::current(), 'index.php?r=periode');
                 if ($temp == true) {
                     echo '<li class="active">';
                 } else {
@@ -204,7 +204,7 @@ AppAsset::register($this);
               </a>
             </li>
             <?php 
-                $temp = stripos(Url::current(), 'departemen');
+                $temp = stripos(Url::current(), 'index.php?r=departemen');
                 if ($temp == true) {
                     echo '<li class="active">';
                 } else {
@@ -217,7 +217,7 @@ AppAsset::register($this);
               </a>
             </li>
             <?php 
-                $temp = stripos(Url::current(), 'kategori-koefisien');
+                $temp = stripos(Url::current(), 'index.php?r=kategori-koefisien');
                 if ($temp == true) {
                     echo '<li class="active">';
                 } else {
@@ -230,7 +230,7 @@ AppAsset::register($this);
               </a>
             </li>
             <?php 
-                $temp = stripos(Url::current(), 'program-studi');
+                $temp = stripos(Url::current(), 'index.php?r=program-studi');
                 if ($temp == true) {
                     echo '<li class="active">';
                 } else {

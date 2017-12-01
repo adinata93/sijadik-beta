@@ -50,27 +50,13 @@ class DepartemenController extends Controller
                         'actions' => [
                             'index',
                             'view',
-                            'create',
-                            'update',
                         ],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback'=>function(){
                             return (
                                 (Yii::$app->user->identity->role=='Manajer Pendidikan') ||
-                                (Yii::$app->user->identity->role=='Manajer Umum')
-                            );
-                        }
-                    ],
-                    [
-                        'actions' => [
-                            'index',
-                            'view',
-                        ],
-                        'allow' => true,
-                        'roles' => ['@'],
-                        'matchCallback'=>function(){
-                            return (
+                                (Yii::$app->user->identity->role=='Manajer Umum') ||
                                 (Yii::$app->user->identity->role=='KPS Profesi') ||
                                 (Yii::$app->user->identity->role=='KPS S1') ||
                                 (Yii::$app->user->identity->role=='KPS S2 IKGD') ||
@@ -134,7 +120,6 @@ class DepartemenController extends Controller
         $model = new Departemen();
 
         if ($model->load(Yii::$app->request->post())) {
-
             $dep = Departemen::find()
                 ->where(
                     ['nama' => $model->nama]
@@ -143,7 +128,7 @@ class DepartemenController extends Controller
 
             if ($dep != null) {
                 Yii::$app->session->setFlash('danger', '<b>GAGAL CREATE</b> <br>Departemen dengan <i> Nama: ' . $dep->nama . '</i> sudah ada');
-                Yii::$app->session->setFlash('info', '<b>SOLUSI</b> <br> Berikan input <i>Nama</i> yang berbeda untuk menambahkan periode baru');
+                Yii::$app->session->setFlash('info', '<b>SOLUSI</b> <br> Berikan input <i>Nama</i> yang berbeda untuk menambahkan departemen baru');
                 return $this->render('create', [
                     'model' => $model,
                 ]);
@@ -171,7 +156,6 @@ class DepartemenController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post())) {
-
             $dep = Departemen::find()
                 ->where(
                     ['and',
@@ -183,7 +167,7 @@ class DepartemenController extends Controller
 
             if ($dep != null) {
                 Yii::$app->session->setFlash('danger', '<b>GAGAL UPDATE</b> <br>Departemen dengan <i> Nama: ' . $dep->nama . '</i> sudah ada');
-                Yii::$app->session->setFlash('info', '<b>SOLUSI</b> <br> Berikan input <i>Nama</i> yang berbeda untuk menambahkan periode baru');
+                Yii::$app->session->setFlash('info', '<b>SOLUSI</b> <br> Berikan input <i>Nama</i> yang berbeda untuk melakukan update departemen');
                 return $this->render('update', [
                     'model' => $model,
                 ]);

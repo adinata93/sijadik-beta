@@ -46,12 +46,9 @@ class ProgramStudiSearch extends ProgramStudi
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'sort'=> [
-                'defaultOrder' => [
-                    'kategori_koefisien'=>SORT_ASC,
-                    'nama'=>SORT_ASC,
-                ]
-            ]
+            'pagination' => [
+                'pageSize' => 10,
+            ],
         ]);
 
         $this->load($params);

@@ -30,10 +30,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+            // 'id',
             'periode_dosen_pengajar',
             'departemen_dosen_pengajar',
-            'nip_nidn_dosen_pengajar',
+            'periodeDosenPengajar.periodeDosen.nama_dosen',
             // 'periode_mata_kuliah_pengajar',
             'program_studi_mata_kuliah_pengajar',
             'kategori_koefisien_program_studi_mata_kuliah_pengajar',

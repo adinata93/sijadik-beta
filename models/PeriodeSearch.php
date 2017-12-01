@@ -46,6 +46,14 @@ class PeriodeSearch extends Periode
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => 10,
+            ],
+            'sort'=> [
+                'defaultOrder' => [
+                    'nama'=>SORT_DESC,
+                ]
+            ]
         ]);
 
         $this->load($params);

@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'attribute'=>'periode',
-                'group'=>true,
+                // 'group'=>true,
                 'filterType'=>GridView::FILTER_SELECT2,
                 'filter' => ArrayHelper::map(Periode::find()->all(),'nama','nama'),
                 'filterWidgetOptions'=>[

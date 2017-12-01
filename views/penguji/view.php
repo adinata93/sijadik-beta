@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'periode_dosen',
             'departemen_dosen',
-            'nip_nidn_dosen',
+            'periodeDosen.nama_dosen',
             'jenis_ujian',
             'peran',
             'jumlah_mahasiswa',

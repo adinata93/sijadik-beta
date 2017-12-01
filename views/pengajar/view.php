@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'periode_dosen',
             'departemen_dosen',
-            'nip_nidn_dosen',
+            'periodeDosen.nama_dosen',
             // 'periode_mata_kuliah',
             'kategori_koefisien_program_studi_mata_kuliah',
             'program_studi_mata_kuliah',
