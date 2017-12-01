@@ -31,7 +31,14 @@ $config = [
         ],
         'user' => [
             'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
+            'enableAutoLogin' => false,
+            'authTimeout' => 60 * 30,
+        ],
+        'session' => [
+            'class' => 'yii\web\Session',
+            'cookieParams' => ['httponly' => true, 'lifetime' => 60 * 30],
+            'timeout' => 60 * 30,
+            'useCookies' => true,
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',

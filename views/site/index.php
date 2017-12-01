@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				<ul style="list-style-type:circle">
         			<!-- MAINTENANCE CODE -->
 					<li>
-					  	Ketua Program Studi (KPS) hanya dapat mengolah data yang berkaitan dengan Departemen dan Program Studi sesuai wewenangnya sebagai KPS.
+					  	Ketua Program Studi (KPS) hanya dapat mengolah data yang berkaitan dengan wewenangnya sebagai KPS.
 	                </li>
 					<li>
 						Periode pengisian SIJADIK berakhir 1 bulan sejak semester berjalan. Setiap KPS harap menyelesaikan pengisian sebelum periode pengisian berakhir. 

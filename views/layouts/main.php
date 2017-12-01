@@ -225,7 +225,7 @@ AppAsset::register($this);
                 }
             ?>
               <a href="index.php?r=kategori-koefisien%2Findex">
-                <i class="glyphicon glyphicon-tag"></i>
+                <i class="fa fa-tag"></i>
                 <span>Kategori Koefisien</span> 
               </a>
             </li>
@@ -238,10 +238,24 @@ AppAsset::register($this);
                 }
             ?>
               <a href="index.php?r=program-studi%2Findex">
-                <i class="glyphicon glyphicon-tags"></i>
+                <i class="fa fa-tags"></i>
                 <span>Program Studi</span> 
               </a>
             </li>
+<!--             
+            <?php 
+                if (Yii::$app->user->identity->role=='Tenaga Kependidikan SDM') {
+                    echo '
+                    <li>
+                      <a href="index.php?r=site%2Fsignup">
+                        <i class="fa fa-user-plus"></i>
+                        <span>Add Admin</span> 
+                      </a>
+                    </li>
+                    ';
+                }
+            ?>
+ -->
           </ul><!-- /.sidebar-menu -->
         </section>
         <!-- /.sidebar -->
