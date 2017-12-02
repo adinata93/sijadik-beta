@@ -50,8 +50,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'kartik\grid\SerialColumn'],
 
             // 'id',
-            'nip',
             'nama',
+            'nip',
             'role',
             'username',
             // 'auth_key',

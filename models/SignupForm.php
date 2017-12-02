@@ -16,6 +16,10 @@ class SignupForm extends Model
     public $email;
     public $password;
 
+    public $id;
+    public $status;
+    public $created_at;
+    public $updated_at;
 
     /**
      * @inheritdoc
@@ -31,6 +35,7 @@ class SignupForm extends Model
             ['nama', 'string', 'max' => 100],
                         
             ['role', 'required'],
+            ['role', 'unique', 'targetClass' => '\app\models\User', 'message' => 'This role has already been taken.'],
             ['nama', 'string', 'max' => 100],
 
             ['username', 'trim'],
@@ -46,6 +51,9 @@ class SignupForm extends Model
 
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
+
+            [['id', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['nip', 'nama', 'role', 'username', 'auth_key', 'password_hash', 'password_reset_token', 'email'], 'safe'],
         ];
     }
 

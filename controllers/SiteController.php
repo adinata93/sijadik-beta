@@ -184,9 +184,7 @@ class SiteController extends Controller
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
-                // if (Yii::$app->getUser()->login($user)) { // GANTI DENGAN FLASH BAHWA PENAMBAHAN AKUN BERHASIL
-                    return $this->goHome();
-                // }
+                return $this->redirect(['/user-management/view', 'id' => $user->id]);
             }
         }
 
