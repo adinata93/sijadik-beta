@@ -34,12 +34,12 @@ $config = [
             'enableAutoLogin' => false,
             'authTimeout' => 30 * 60,
         ],
-        'session' => [
-            'class' => 'yii\web\Session',
-            'cookieParams' => ['httponly' => true, 'lifetime' => 30 * 60],
-            'timeout' => 30 * 60,
-            'useCookies' => true,
-        ],
+        // 'session' => [
+        //     'class' => 'yii\web\Session',
+        //     'cookieParams' => ['httponly' => true, 'lifetime' => 30 * 60],
+        //     'timeout' => 30 * 60,
+        //     'useCookies' => true,
+        // ],
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],

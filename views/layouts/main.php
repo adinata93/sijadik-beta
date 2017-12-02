@@ -242,20 +242,23 @@ AppAsset::register($this);
                 <span>Program Studi</span> 
               </a>
             </li>
-<!--             
             <?php 
                 if (Yii::$app->user->identity->role=='Tenaga Kependidikan SDM') {
+                  $temp = stripos(Url::current(), 'index.php?r=user-management');
+                  if ($temp == true) {
+                    echo '<li class="active">'; 
+                  } else {
+                    echo '<li>';
+                  }
                     echo '
-                    <li>
-                      <a href="index.php?r=site%2Fsignup">
-                        <i class="fa fa-user-plus"></i>
-                        <span>Add Admin</span> 
+                      <a href="index.php?r=user-management%2Findex">
+                        <i class="fa fa-users"></i>
+                        <span>User Managemen</span> 
                       </a>
                     </li>
                     ';
                 }
             ?>
- -->
           </ul><!-- /.sidebar-menu -->
         </section>
         <!-- /.sidebar -->
