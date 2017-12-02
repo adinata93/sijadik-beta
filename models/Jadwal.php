@@ -77,4 +77,12 @@ class Jadwal extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Pengajar::className(), ['periode_dosen' => 'periode_dosen_pengajar', 'departemen_dosen' => 'departemen_dosen_pengajar', 'nip_nidn_dosen' => 'nip_nidn_dosen_pengajar', 'periode_mata_kuliah' => 'periode_mata_kuliah_pengajar', 'program_studi_mata_kuliah' => 'program_studi_mata_kuliah_pengajar', 'kategori_koefisien_program_studi_mata_kuliah' => 'kategori_koefisien_program_studi_mata_kuliah_pengajar', 'nama_mata_kuliah' => 'nama_mata_kuliah_pengajar', 'jenis_mata_kuliah' => 'jenis_mata_kuliah_pengajar']);
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPeriodeDosen()
+    {
+        return $this->hasOne(Dosen::className(), ['periode' => 'periode_dosen_pengajar', 'departemen' => 'departemen_dosen_pengajar', 'nip_nidn' => 'nip_nidn_dosen_pengajar']);
+    }
 }

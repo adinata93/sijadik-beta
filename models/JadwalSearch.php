@@ -60,6 +60,8 @@ class JadwalSearch extends Jadwal
             return $dataProvider;
         }
 
+        $query->joinWith('periodeDosen');
+
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
@@ -70,7 +72,7 @@ class JadwalSearch extends Jadwal
 
         $query->andFilterWhere(['like', 'periode_dosen_pengajar', $this->periode_dosen_pengajar])
             ->andFilterWhere(['like', 'departemen_dosen_pengajar', $this->departemen_dosen_pengajar])
-            ->andFilterWhere(['like', 'nip_nidn_dosen_pengajar', $this->nip_nidn_dosen_pengajar])
+            ->andFilterWhere(['like', 'dosen.nama_dosen', $this->nip_nidn_dosen_pengajar])
             ->andFilterWhere(['like', 'periode_mata_kuliah_pengajar', $this->periode_mata_kuliah_pengajar])
             ->andFilterWhere(['like', 'program_studi_mata_kuliah_pengajar', $this->program_studi_mata_kuliah_pengajar])
             ->andFilterWhere(['like', 'kategori_koefisien_program_studi_mata_kuliah_pengajar', $this->kategori_koefisien_program_studi_mata_kuliah_pengajar])
