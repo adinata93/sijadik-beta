@@ -15,7 +15,6 @@ use kartik\select2\Select2;
 
     <?= $form->field($model, 'nama')->widget(Select2::classname(), [
         'data' => [ 'D3' => 'D3', 'S1 Reguler' => 'S1 Reguler', 'S1 Ekstensi / Khusus / Sejenis' => 'S1 Ekstensi / Khusus / Sejenis', 'S1 Internasional' => 'S1 Internasional', 'Profesi' => 'Profesi', 'S2 Reguler' => 'S2 Reguler', 'Spesialis' => 'Spesialis', 'S2 Khusus' => 'S2 Khusus', 'S3' => 'S3', ],
-        'language' => 'en',
         'options' => ['placeholder' => 'Search kategori koefisien'],
         'pluginOptions' => [
             'allowClear' => true
