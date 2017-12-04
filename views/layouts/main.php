@@ -203,6 +203,8 @@ AppAsset::register($this);
                 <small class="label pull-right bg-red"><i class="fa fa-lock"></i></small>
               </a>
             </li>
+<!-- 
+# UNCOMENT THIS BLOCK IF YOU WANT TO SHOW DEPARTEMEN SETTING, KATEGORI KOEFISIEN SETTING, AND PROGRAM STUDI SETTING
             <?php 
                 $temp = stripos(Url::current(), 'index.php?r=departemen');
                 if ($temp == true) {
@@ -242,6 +244,8 @@ AppAsset::register($this);
                 <span>Program Studi</span> 
               </a>
             </li>
+# /.UNCOMENT THIS BLOCK IF YOU WANT TO SHOW DEPARTEMEN SETTING, KATEGORI KOEFISIEN SETTING, AND PROGRAM STUDI SETTING
+ -->           
             <?php 
                 if (Yii::$app->user->identity->role=='Tenaga Kependidikan SDM') {
                   $temp = stripos(Url::current(), 'index.php?r=user-management');
