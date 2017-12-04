@@ -257,7 +257,7 @@ AppAsset::register($this);
                     echo '
                       <a href="index.php?r=user-management%2Findex">
                         <i class="fa fa-users"></i>
-                        <span>User Managemen</span> 
+                        <span>User Management</span> 
                       </a>
                     </li>
                     ';
