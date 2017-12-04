@@ -28,7 +28,7 @@ class SignupForm extends Model
     {
         return [
             ['nip', 'required'],
-            ['nip', 'unique', 'targetClass' => '\app\models\User', 'message' => 'This nip has already been taken.'],
+            // ['nip', 'unique', 'targetClass' => '\app\models\User', 'message' => 'This nip has already been taken.'],
             ['nip', 'string', 'max' => 18],
             
             ['nama', 'required'],
