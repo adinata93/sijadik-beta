@@ -92,6 +92,7 @@ class SiteController extends Controller
      */
     public function actions()
     {
+		
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
@@ -120,6 +121,16 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
+		// Enable debugging
+		 \phpCAS::setDebug();
+		 
+		// Initialize phpCAS
+		\phpCAS::client(CAS_VERSION_2_0, \Yii::$app->params['casHost'], \Yii::$app->params['casPort'], \Yii::$app->params['casContext']);
+		\phpCAS::setNoCasServerValidation();
+		\phpCAS::forceAuthentication();
+		echo \phpCAS::getUser();
+		
+		/*
         $this->layout = 'loginLayout';
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
@@ -132,6 +143,7 @@ class SiteController extends Controller
         return $this->render('login', [
             'model' => $model,
         ]);
+		*/
     }
 
     /**

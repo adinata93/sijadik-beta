@@ -1,0 +1,81 @@
+C266 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+C266 .=> phpCAS::client('2.0', 'sso.ui.ac.id', 443, 'cas') [SiteController.php:128]
+C266 .|    => CAS_Client::__construct('2.0', false, 'sso.ui.ac.id', 443, 'cas', true) [CAS.php:338]
+C266 .|    <= ''
+C266 .<= ''
+C266 .=> phpCAS::setNoCasServerValidation() [SiteController.php:129]
+C266 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+C266 .<= ''
+C266 .=> phpCAS::forceAuthentication() [SiteController.php:130]
+C266 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+C266 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+C266 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+C266 .|    |    |    |    no user found [Client.php:1592]
+C266 .|    |    |    <= false
+C266 .|    |    |    no ticket found [Client.php:1453]
+C266 .|    |    <= false
+C266 .|    |    => CAS_Client::redirectToCas(false) [Client.php:1254]
+C266 .|    |    |    => CAS_Client::getServerLoginURL(false, false) [Client.php:1613]
+C266 .|    |    |    |    => CAS_Client::getURL() [Client.php:342]
+C266 .|    |    |    |    |    Final URI: http://localhost/sijadik-beta/web/index.php?r=site%2Flogin [Client.php:3466]
+C266 .|    |    |    |    <= 'http://localhost/sijadik-beta/web/index.php?r=site%2Flogin'
+C266 .|    |    |    <= 'https://sso.ui.ac.id/cas/login?service=http%3A%2F%2Flocalhost%2Fsijadik-beta%2Fweb%2Findex.php%3Fr%3Dsite%252Flogin'
+C266 .|    |    |    Redirect to : https://sso.ui.ac.id/cas/login?service=http%3A%2F%2Flocalhost%2Fsijadik-beta%2Fweb%2Findex.php%3Fr%3Dsite%252Flogin [Client.php:1620]
+C266 .|    |    |    exit()
+C266 .|    |    |    -
+C266 .|    |    -
+C266 .|    -
+480F .START phpCAS-1.3.3 ****************** [CAS.php:438]
+480F .=> phpCAS::client('2.0', 'sso.ui.ac.id', 443, 'cas') [SiteController.php:128]
+480F .|    => CAS_Client::__construct('2.0', false, 'sso.ui.ac.id', 443, 'cas', true) [CAS.php:338]
+480F .|    <= ''
+480F .<= ''
+480F .=> phpCAS::setNoCasServerValidation() [SiteController.php:129]
+480F .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+480F .<= ''
+480F .=> phpCAS::forceAuthentication() [SiteController.php:130]
+480F .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+480F .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+480F .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+480F .|    |    |    |    no user found [Client.php:1592]
+480F .|    |    |    <= false
+480F .|    |    |    no ticket found [Client.php:1453]
+480F .|    |    <= false
+480F .|    |    => CAS_Client::redirectToCas(false) [Client.php:1254]
+480F .|    |    |    => CAS_Client::getServerLoginURL(false, false) [Client.php:1613]
+480F .|    |    |    |    => CAS_Client::getURL() [Client.php:342]
+480F .|    |    |    |    |    Final URI: http://localhost/sijadik-beta/web/index.php?r=site%2Flogin [Client.php:3466]
+480F .|    |    |    |    <= 'http://localhost/sijadik-beta/web/index.php?r=site%2Flogin'
+480F .|    |    |    <= 'https://sso.ui.ac.id/cas/login?service=http%3A%2F%2Flocalhost%2Fsijadik-beta%2Fweb%2Findex.php%3Fr%3Dsite%252Flogin'
+480F .|    |    |    Redirect to : https://sso.ui.ac.id/cas/login?service=http%3A%2F%2Flocalhost%2Fsijadik-beta%2Fweb%2Findex.php%3Fr%3Dsite%252Flogin [Client.php:1620]
+480F .|    |    |    exit()
+480F .|    |    |    -
+480F .|    |    -
+480F .|    -
+0DB5 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+0DB5 .=> phpCAS::client('2.0', 'sso.ui.ac.id', 443, 'cas') [SiteController.php:128]
+0DB5 .|    => CAS_Client::__construct('2.0', false, 'sso.ui.ac.id', 443, 'cas', true) [CAS.php:338]
+0DB5 .|    <= ''
+0DB5 .<= ''
+0DB5 .=> phpCAS::setNoCasServerValidation() [SiteController.php:129]
+0DB5 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+0DB5 .<= ''
+0DB5 .=> phpCAS::forceAuthentication() [SiteController.php:130]
+0DB5 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+0DB5 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+0DB5 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+0DB5 .|    |    |    |    no user found [Client.php:1592]
+0DB5 .|    |    |    <= false
+0DB5 .|    |    |    no ticket found [Client.php:1453]
+0DB5 .|    |    <= false
+0DB5 .|    |    => CAS_Client::redirectToCas(false) [Client.php:1254]
+0DB5 .|    |    |    => CAS_Client::getServerLoginURL(false, false) [Client.php:1613]
+0DB5 .|    |    |    |    => CAS_Client::getURL() [Client.php:342]
+0DB5 .|    |    |    |    |    Final URI: http://localhost/sijadik-beta/web/index.php?r=site%2Flogin [Client.php:3466]
+0DB5 .|    |    |    |    <= 'http://localhost/sijadik-beta/web/index.php?r=site%2Flogin'
+0DB5 .|    |    |    <= 'https://sso.ui.ac.id/cas/login?service=http%3A%2F%2Flocalhost%2Fsijadik-beta%2Fweb%2Findex.php%3Fr%3Dsite%252Flogin'
+0DB5 .|    |    |    Redirect to : https://sso.ui.ac.id/cas/login?service=http%3A%2F%2Flocalhost%2Fsijadik-beta%2Fweb%2Findex.php%3Fr%3Dsite%252Flogin [Client.php:1620]
+0DB5 .|    |    |    exit()
+0DB5 .|    |    |    -
+0DB5 .|    |    -
+0DB5 .|    -
